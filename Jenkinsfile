@@ -32,7 +32,8 @@ pipeline {
                         reportFiles: 'index.html',
                         reportName: 'PIT Mutation Report',
                         keepAll: true,
-                        alwaysLinkToLastBuild: true
+                        alwaysLinkToLastBuild: true,
+                        allowMissing: false
                     ])
                 }
             }
