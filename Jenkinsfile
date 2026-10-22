@@ -2,6 +2,7 @@ pipeline {
   agent any
 
   environment {
+    PROJECT_KEY = 'numeric-application'
     SONAR_TOKEN = credentials('SONAR_TOKEN')
   }
 
@@ -49,7 +50,7 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
                 sh """
                     mvn sonar:sonar \
-                      -Dsonar.projectKey=numeric-application \
+                      -Dsonar.projectKey=${PROJECT_KEY} \
                       -Dsonar.host.url=http://devsecops-demo.eastus.cloudapp.azure.com:9000 \
                       -Dsonar.login=${SONAR_TOKEN}
                 """
