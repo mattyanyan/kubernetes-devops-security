@@ -49,7 +49,7 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
                 sh """
-                    mvn sonar:sonar \
+                    mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
                       -Dsonar.projectKey=${PROJECT_KEY} \
                       -Dsonar.host.url=http://devsecops-demo.eastus.cloudapp.azure.com:9000 \
                       -Dsonar.login=${SONAR_TOKEN}
